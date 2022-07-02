@@ -13,54 +13,54 @@ const courseRoutes = Router();
 const courseController = new CourseController(new CourseService(AppDataSource));
 
 courseRoutes.post(
-  '/courses',
-  multer(multerConfig).single('image'),
-  CreateCourseDto.validators(),
-  validator,
-  (request: Request, response: Response, next: NextFunction) => {
-    courseController.create(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/courses',
+	multer(multerConfig).single('image'),
+	CreateCourseDto.validators(),
+	validator,
+	(request: Request, response: Response, next: NextFunction) => {
+		courseController.create(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 courseRoutes.get(
-  '/courses',
-  (request: Request, response: Response, next: NextFunction) => {
-    courseController.getAll(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/courses',
+	(request: Request, response: Response, next: NextFunction) => {
+		courseController.getAll(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 courseRoutes.get(
-  '/courses/:id',
-  (request: Request, response: Response, next: NextFunction) => {
-    courseController.show(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/courses/:id',
+	(request: Request, response: Response, next: NextFunction) => {
+		courseController.show(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 courseRoutes.put(
-  '/courses/:id',
-  multer(multerConfig).single('image'),
-  UpdateCourseDto.validators(),
-  validator,
-  (request: Request, response: Response, next: NextFunction) => {
-    courseController.update(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/courses/:id',
+	multer(multerConfig).single('image'),
+	UpdateCourseDto.validators(),
+	validator,
+	(request: Request, response: Response, next: NextFunction) => {
+		courseController.update(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 courseRoutes.delete(
-  '/courses/:id',
-  (request: Request, response: Response, next: NextFunction) => {
-    courseController.delete(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/courses/:id',
+	(request: Request, response: Response, next: NextFunction) => {
+		courseController.delete(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 export { courseRoutes };

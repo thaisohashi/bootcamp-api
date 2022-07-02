@@ -1,44 +1,45 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  JoinColumn,
-  ManyToOne,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
+	Column,
+	CreateDateColumn,
+	Entity,
+	JoinColumn,
+	ManyToOne,
+	PrimaryGeneratedColumn,
+	UpdateDateColumn,
 } from 'typeorm';
 import { CategoryEntity } from './category.entity';
 
 @Entity({ name: 'courses' })
 export class CourseEntity {
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  	id!: string;
 
   @Column({ type: 'varchar', nullable: false })
-  name!: string;
+  	name!: string;
 
   @Column({ type: 'varchar', nullable: false })
-  description!: string;
+  	description!: string;
 
   @Column({ type: 'float', nullable: false })
-  value!: number;
+  	value!: number;
 
   @Column({ type: 'varchar', nullable: false })
-  image!: string;
+  	image!: string;
 
   @Column({ type: 'boolean', nullable: false })
-  disponibility!: boolean;
+  	disponibility!: boolean;
 
   @ManyToOne(() => CategoryEntity, (category) => category.courses, {
-    onDelete: 'CASCADE',
-    nullable: false,
+  	onDelete: 'CASCADE',
+  	nullable: false,
   })
   @JoinColumn({ name: 'category_id', referencedColumnName: 'id' })
-  category!: CategoryEntity;
+  	category!: CategoryEntity;
 
   @CreateDateColumn()
-  created_at?: Date;
+  	created_at?: Date;
 
   @UpdateDateColumn()
-  updated_at?: Date;
+  	updated_at?: Date;
 }

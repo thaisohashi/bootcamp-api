@@ -14,48 +14,48 @@ interface UpdateCourseBody extends Request {
 }
 
 export class CourseController {
-  constructor(private readonly courseService: CourseService) {}
+	constructor(private readonly courseService: CourseService) {}
 
-  async create(
-    { body, file }: CreateCourseBody,
-    response: Response,
-  ): Promise<Response<CreatedCourseDto>> {
-    const course = await this.courseService.create({
-      ...body,
-      image: file?.filename,
-    });
-    return response.status(HttpStatus.CREATED).json(course);
-  }
+	async create(
+		{ body, file }: CreateCourseBody,
+		response: Response,
+	): Promise<Response<CreatedCourseDto>> {
+		const course = await this.courseService.create({
+			...body,
+			image: file?.filename,
+		});
+		return response.status(HttpStatus.CREATED).json(course);
+	}
 
-  async getAll(
-    _request: Request,
-    response: Response,
-  ): Promise<Response<CreatedCourseDto[]>> {
-    const courses = await this.courseService.getAll();
-    return response.status(HttpStatus.OK).json(courses);
-  }
+	async getAll(
+		_request: Request,
+		response: Response,
+	): Promise<Response<CreatedCourseDto[]>> {
+		const courses = await this.courseService.getAll();
+		return response.status(HttpStatus.OK).json(courses);
+	}
 
-  async show(
-    { params }: Request,
-    response: Response,
-  ): Promise<Response<CreatedCourseDto>> {
-    const course = await this.courseService.show(params.id);
-    return response.status(HttpStatus.OK).json(course);
-  }
+	async show(
+		{ params }: Request,
+		response: Response,
+	): Promise<Response<CreatedCourseDto>> {
+		const course = await this.courseService.show(params.id);
+		return response.status(HttpStatus.OK).json(course);
+	}
 
-  async update(
-    { body, file, params }: UpdateCourseBody,
-    response: Response,
-  ): Promise<Response<void>> {
-    await this.courseService.update(params.id, {
-      ...body,
-      image: file?.filename,
-    });
-    return response.status(HttpStatus.NO_CONTENT).json();
-  }
+	async update(
+		{ body, file, params }: UpdateCourseBody,
+		response: Response,
+	): Promise<Response<void>> {
+		await this.courseService.update(params.id, {
+			...body,
+			image: file?.filename,
+		});
+		return response.status(HttpStatus.NO_CONTENT).json();
+	}
 
-  async delete({ params }: Request, response: Response) {
-    await this.courseService.delete(params.id);
-    return response.status(HttpStatus.NO_CONTENT).json();
-  }
+	async delete({ params }: Request, response: Response) {
+		await this.courseService.delete(params.id);
+		return response.status(HttpStatus.NO_CONTENT).json();
+	}
 }

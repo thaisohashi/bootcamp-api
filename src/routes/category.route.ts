@@ -9,62 +9,62 @@ import { CategoryService } from '../services/category.service';
 const categoryRoutes = Router();
 
 const categoryController = new CategoryController(
-  new CategoryService(AppDataSource),
+	new CategoryService(AppDataSource),
 );
 
 categoryRoutes.get('/', (_request: Request, response: Response) => {
-  return response.json({ status: 'success', version: '1.0.0' }).status(200);
+	return response.json({ status: 'success', version: '1.0.0' }).status(200);
 });
 
 // CATEGORIES
 
 categoryRoutes.post(
-  '/categories',
-  CreateCategoryDto.validators(),
-  validator,
-  (request: Request, response: Response, next: NextFunction) => {
-    categoryController.create(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/categories',
+	CreateCategoryDto.validators(),
+	validator,
+	(request: Request, response: Response, next: NextFunction) => {
+		categoryController.create(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 categoryRoutes.get(
-  '/categories',
-  (request: Request, response: Response, next: NextFunction) => {
-    categoryController.getAll(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/categories',
+	(request: Request, response: Response, next: NextFunction) => {
+		categoryController.getAll(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 categoryRoutes.get(
-  '/categories/:id',
-  (request: Request, response: Response, next: NextFunction) => {
-    categoryController.show(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/categories/:id',
+	(request: Request, response: Response, next: NextFunction) => {
+		categoryController.show(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 categoryRoutes.put(
-  '/categories/:id',
-  UpdateCategoryDto.validators(),
-  validator,
-  (request: Request, response: Response, next: NextFunction) => {
-    categoryController.update(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/categories/:id',
+	UpdateCategoryDto.validators(),
+	validator,
+	(request: Request, response: Response, next: NextFunction) => {
+		categoryController.update(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 categoryRoutes.delete(
-  '/categories/:id',
-  (request: Request, response: Response, next: NextFunction) => {
-    categoryController.delete(request, response).catch((error: Error) => {
-      next(error);
-    });
-  },
+	'/categories/:id',
+	(request: Request, response: Response, next: NextFunction) => {
+		categoryController.delete(request, response).catch((error: Error) => {
+			next(error);
+		});
+	},
 );
 
 export { categoryRoutes };

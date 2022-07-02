@@ -14,7 +14,7 @@ app.use(errorHandler);
 app.use('/files', express.static(resolve(__dirname, '..', 'uploads')));
 
 AppDataSource.initialize()
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server is running in port: ${PORT}`));
-  })
-  .catch((error) => console.log(error));
+	.then(() => {
+		app.listen(PORT, () => console.log(`Server is running in port: ${PORT}`));
+	})
+	.catch((error) => console.log(error));

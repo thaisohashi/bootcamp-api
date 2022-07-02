@@ -1,27 +1,29 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+
 import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  OneToMany,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
+	Column,
+	CreateDateColumn,
+	Entity,
+	OneToMany,
+	PrimaryGeneratedColumn,
+	UpdateDateColumn,
 } from 'typeorm';
 import { CourseEntity } from './course.entity';
 
 @Entity({ name: 'categories' })
 export class CategoryEntity {
   @PrimaryGeneratedColumn('uuid')
-  id!: string;
+  	id!: string;
 
   @Column({ type: 'varchar', nullable: false })
-  name!: string;
+  	name!: string;
 
   @CreateDateColumn()
-  created_at?: Date;
+  	created_at?: Date;
 
   @UpdateDateColumn()
-  updated_at?: Date;
+  	updated_at?: Date;
 
   @OneToMany(() => CourseEntity, (course) => course.category)
-  courses?: CourseEntity[];
+  	courses?: CourseEntity[];
 }
